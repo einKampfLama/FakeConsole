@@ -1,5 +1,7 @@
 from datetime import datetime
+
 import commands.MoveFileCMD
+from commands import MoveFileCMD, CreateFileCMD
 
 print(datetime.now())
 
@@ -16,10 +18,11 @@ def unknown_command(args):
     print("Unbekannter Befehl.")
 
 
-commands = {
+cmds = {
     "hi": say_hi,
     "bye": say_bye,
-    "movefile": commands.MoveFileCMD.run
+    "movefile": commands.MoveFileCMD.run,
+    "createfile": commands.CreateFileCMD.run
 }
 
 
@@ -31,6 +34,6 @@ while True:
         break
 
     args = user_input.split(" ")
-    command = commands.get(args[0], unknown_command)
+    command = cmds.get(args[0], unknown_command)
 
     command(args)
