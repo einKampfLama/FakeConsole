@@ -30,7 +30,8 @@ cmds = {
     "editfile": commands.EditFileCMD.run
 }
 
-
+print("List of the commands")
+print(cmds.keys().__str__().replace("dict_keys(", "").replace(")", ""))
 
 while True:
     user_input = input(">> ")
