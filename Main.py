@@ -1,8 +1,8 @@
 from datetime import datetime
 
 import commands.MoveFileCMD
-from commands import MoveFileCMD, CreateFileCMD
-
+import commands.WriteFileCommand
+import commands.CreateFileCMD
 print(datetime.now())
 
 def say_hi(args):
@@ -22,7 +22,8 @@ cmds = {
     "hi": say_hi,
     "bye": say_bye,
     "movefile": commands.MoveFileCMD.run,
-    "createfile": commands.CreateFileCMD.run
+    "createfile": commands.CreateFileCMD.run,
+    "writefile": commands.WriteFileCommand.run
 }
 
 
