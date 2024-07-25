@@ -1,23 +1,28 @@
 from datetime import datetime
+import commands.MoveFileCMD
 
 print(datetime.now())
 
-def say_hi():
+def say_hi(args):
     print("Hallo!")
+    print(args)
 
 
-def say_bye():
+def say_bye(args):
     print("Auf Wiedersehen!")
 
 
-def unknown_command():
+def unknown_command(args):
     print("Unbekannter Befehl.")
 
 
 commands = {
     "hi": say_hi,
-    "bye": say_bye
+    "bye": say_bye,
+    "movefile": commands.MoveFileCMD.run
 }
+
+
 
 while True:
     user_input = input(">> ")
@@ -25,5 +30,7 @@ while True:
     if user_input == 'quit':
         break
 
-    command = commands.get(user_input, unknown_command)
-    command()
+    args = user_input.split(" ")
+    command = commands.get(args[0], unknown_command)
+
+    command(args)
